@@ -7,22 +7,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # - name: Checkout code
+      - uses: actions/checkout@v2
         
       - name: Use NodeJS
         uses: actions/setup-node@v1
         with:
             node-version: "12.x"
 
-      - name: Install dependencies for CI environment 
-        run: npm ci
+      # - name: Install dependencies for CI environment 
+      -  run: npm ci
 
 
-      - name: Check code formatting
-        run: npx prettier --check "**/*.js"
+      # - name: Check code formatting
+      - run: npx prettier --check "**/*.js"
       
-      - name: Run Tests and generate Code Coverage
+      # - name: Run Tests and generate Code Coverage
+      - run: npm test -- --coverage
         env: 
           CI: true
-        run: npm test -- --coverage
